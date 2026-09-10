@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="OIBSIP Web Development Internship Projects">
+    <title>OIBSIP | Web Development Projects</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(0, 212, 255, 0.22), transparent 30%),
+                radial-gradient(circle at 85% 75%, rgba(130, 70, 255, 0.25), transparent 35%),
+                linear-gradient(135deg, #08111f, #101b31 50%, #080d19);
+            position: relative;
+        }
+
+        body::before,
+        body::after {
+            content: "";
+            position: fixed;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            filter: blur(10px);
+            opacity: 0.35;
+            z-index: -1;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        body::before {
+            background: #00d4ff;
+            top: -100px;
+            left: -80px;
+        }
+
+        body::after {
+            background: #8a5cff;
+            bottom: -120px;
+            right: -80px;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(25px) scale(1.05); }
+        }
+
+        .container {
+            width: min(1050px, 100%);
+            text-align: center;
+        }
+
+        .hero {
+            margin-bottom: 35px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 50px;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            font-size: 13px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
+            line-height: 1.05;
+            margin-bottom: 15px;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, #fff, #9eeeff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .intro {
+            max-width: 720px;
+            margin: auto;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            min-height: 270px;
+            padding: 30px 24px;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 24px;
+            background: rgba(255,255,255,0.09);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            background: rgba(255,255,255,0.14);
+            border-color: rgba(255,255,255,0.35);
+        }
+
+        .icon {
+            width: 72px;
+            height: 72px;
+            display: grid;
+            place-items: center;
+            border-radius: 20px;
+            font-size: 34px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.16);
+        }
+
+        .card h2 {
+            font-size: 21px;
+            margin: 20px 0 10px;
+        }
+
+        .card p {
+            color: rgba(255,255,255,0.68);
+            font-size: 14px;
+            line-height: 1.6;
+            min-height: 67px;
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: 0.25s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.22);
+            transform: scale(1.02);
+        }
+
+        footer {
+            margin-top: 35px;
+            color: rgba(255,255,255,0.5);
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+            .projects {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+                margin: auto;
+            }
+
+            .card {
+                min-height: 245px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 28px 15px;
+            }
+
+            .hero {
+                margin-bottom: 25px;
+            }
+
+            .intro {
+                font-size: 14px;
+            }
+
+            .card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section class="hero">
+            <div class="badge">OIBSIP Web Development Internship</div>
+
+            <h1>My <span>Web Development</span> Projects</h1>
+
+            <p class="intro">
+                Welcome to my OIBSIP internship project collection.
+                Explore the practical projects I developed using HTML, CSS,
+                and JavaScript, focused on responsive design, interactivity,
+                and user-friendly web experiences.
+            </p>
+        </section>
+
+        <section class="projects">
+            <article class="card">
+                <div class="icon">🌐</div>
+                <div>
+                    <h2>Landing Page</h2>
+                    <p>
+                        A responsive landing page demonstrating webpage
+                        structure, navigation, layout, and modern styling.
+                    </p>
+                </div>
+                <a class="btn" href="WebDev-L1-LandingPage/index.html">
+                    View Project →
+                </a>
+            </article>
+
+            <article class="card">
+                <div class="icon">💼</div>
+                <div>
+                    <h2>Portfolio / Profile</h2>
+                    <p>
+                        A personal portfolio website showcasing skills,
+                        projects, experience, and web development work.
+                    </p>
+                </div>
+                <a class="btn" href="webDev-L1-Portfolio/index.html">
+                    View Project →
+                </a>
+            </article>
+
+            <article class="card">
+                <div class="icon">🌡️</div>
+                <div>
+                    <h2>Temperature Converter</h2>
+                    <p>
+                        An interactive web application for converting
+                        temperatures between different units.
+                    </p>
+                </div>
+                <a class="btn" href="WebDev-L1-TemperatureConverter/index.html">
+                    View Project →
+                </a>
+            </article>
+        </section>
+
+        <footer>
+            Built as part of the Oasis Infobyte Web Development Internship (OIBSIP)
+        </footer>
+    </main>
+</body>
+</html>
