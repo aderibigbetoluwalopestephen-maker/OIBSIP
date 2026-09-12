@@ -225,6 +225,7 @@
     .contact-card{padding:22px 18px;}
   }
 
+<style>/* MODERN MOBILE DROPDOWN MENU */ .mobile-menu-btn{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:14px;background:rgba(245,160,40,.1);color:var(--amber-1);align-items:center;justify-content:center;cursor:pointer}.mobile-menu-btn span{width:18px;height:2px;background:currentColor;box-shadow:0 -6px currentColor,0 6px currentColor}.menu-open .mobile-menu-btn span{box-shadow:none;transform:rotate(45deg)}.menu-open .mobile-menu-btn span:after{content:'';display:block;width:18px;height:2px;background:currentColor;transform:rotate(90deg)}@media(max-width:880px){nav.wrap{position:relative}.mobile-menu-btn{display:flex;margin-left:8px}.nav-links{position:absolute;top:calc(100% + 8px);left:18px;right:18px;width:auto!important;display:flex!important;flex-direction:column;gap:4px!important;padding:10px!important;border:1px solid var(--line);border-radius:18px;background:rgba(18,12,9,.98);box-shadow:0 20px 45px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s}.menu-open .nav-links{opacity:1;visibility:visible;transform:translateY(0)}.nav-links a{width:100%;padding:12px 14px;border-radius:12px;font-size:.86rem;border:0}.nav-links a:hover{background:rgba(255,255,255,.06)}} </style>
 </style>
 </head>
 <body>
@@ -232,7 +233,7 @@
 <header>
   <nav class="wrap">
     <div class="brand">Steven<span>.Dev</span></div>
-    <div class="nav-links">
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false"><span></span></button><div class="nav-links">
       <a href="../index.html">Projects Home</a>
       <a href="../WebDev-L1-LandingPage/index.html">Landing Page</a>
       <a href="../WebDev-L1-TemperatureConverter/index.html">Temperature Converter</a>
@@ -429,5 +430,6 @@
   });
 </script>
 
+<script>const b=document.getElementById('mobileMenuBtn'),h=document.querySelector('header');b&&b.addEventListener('click',()=>{const o=h.classList.toggle('menu-open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});h.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>h.classList.remove('menu-open')));</script>
 </body>
 </html>

@@ -29,11 +29,12 @@
     .mini-card{font-size:.75rem;}
   }
 </style>
+<style>/* MODERN MOBILE DROPDOWN MENU */ .mobile-menu-btn{display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.08);color:inherit;align-items:center;justify-content:center;cursor:pointer}.mobile-menu-btn span{width:18px;height:2px;background:currentColor;box-shadow:0 -6px currentColor,0 6px currentColor}.navbar.menu-open .mobile-menu-btn span{box-shadow:none;transform:rotate(45deg)}.navbar.menu-open .mobile-menu-btn span:after{content:'';display:block;width:18px;height:2px;background:currentColor;transform:rotate(90deg)}@media(max-width:760px){.navbar{position:sticky;top:0;z-index:100;flex-wrap:nowrap}.mobile-menu-btn{display:flex;margin-left:auto}.navbar nav{position:absolute;top:calc(100% + 8px);left:10px;right:10px;width:auto!important;display:flex!important;flex-direction:column;gap:4px!important;padding:10px!important;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(17,10,31,.97);box-shadow:0 20px 45px rgba(0,0,0,.35);backdrop-filter:blur(20px);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s}.navbar.menu-open nav{opacity:1;visibility:visible;transform:translateY(0)}.navbar nav a{width:100%;padding:13px 14px!important;border-radius:12px;font-size:.88rem!important;white-space:normal!important}.navbar nav a:hover{background:rgba(255,255,255,.08)}} </style>
 </head>
 <body>
   <header class="navbar">
     <a href="#home" class="logo"><span>✦</span> PurpleNova</a>
-    <nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false"><span></span></button><nav>
       <a href="../index.html">Projects Home</a>
       <a href="#home">Home</a>
       <a href="#features">Features</a>
@@ -117,5 +118,6 @@
   <footer>
     <p>© 2026 PurpleNova. Built for Oasis Infobyte Web Development — Level 1 Task 1.</p>
   </footer>
+<script>const b=document.getElementById('mobileMenuBtn'),n=document.querySelector('.navbar');b&&b.addEventListener('click',()=>{const o=n.classList.toggle('menu-open');b.setAttribute('aria-expanded',o);b.setAttribute('aria-label',o?'Close menu':'Open menu')});n.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('menu-open')));</script>
 </body>
 </html>

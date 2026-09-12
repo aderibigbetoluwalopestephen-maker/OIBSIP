@@ -32,7 +32,8 @@
       .brand{font-size:.85rem;}
     }
 
-  </style>
+  <style>/* MODERN MOBILE DROPDOWN MENU */ .menu-shell{position:fixed;top:0;right:0;z-index:40;padding:10px 14px}.mobile-menu-btn{width:44px;height:44px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.09);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}.mobile-menu-btn span{width:18px;height:2px;background:currentColor;box-shadow:0 -6px currentColor,0 6px currentColor}.project-nav.menu-open+.menu-shell .mobile-menu-btn span{box-shadow:none;transform:rotate(45deg)}@media(max-width:600px){.project-nav{position:fixed;top:62px;left:12px;right:12px;display:flex;flex-direction:column;gap:4px;padding:10px;overflow:visible;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:rgba(18,10,30,.97);box-shadow:0 20px 45px rgba(0,0,0,.38);opacity:0;visibility:hidden;transform:translateY(-8px);transition:.22s}.project-nav.menu-open{opacity:1;visibility:visible;transform:translateY(0)}.project-nav a{width:100%;padding:12px 14px;font-size:12px;text-align:left;border:0;border-radius:12px}.project-nav a:hover{background:rgba(255,255,255,.08)}} </style>
+</style>
 </head>
 <body>
   <nav class="project-nav" aria-label="Project navigation">
@@ -92,5 +93,5 @@
     <footer>Built with HTML5, CSS3 &amp; Vanilla JavaScript • 2026</footer>
   </main>
   <script src="script.js"></script>
-</body>
+<div class="menu-shell"><button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false"><span></span></button></div><script>const b=document.getElementById("mobileMenuBtn"),n=document.querySelector(".project-nav");b&&b.addEventListener("click",()=>{const o=n.classList.toggle("menu-open");b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Close menu":"Open menu")});n.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>n.classList.remove("menu-open")));</script></body>
 </html>
