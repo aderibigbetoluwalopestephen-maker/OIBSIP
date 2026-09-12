@@ -1,0 +1,65 @@
+name: Add project navigation buttons
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-navigation:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add navigation buttons
+        shell: python
+        run: |
+          from pathlib import Path
+
+          portfolio = Path('webDev-L1-Portfolio/index.html')
+          text = portfolio.read_text(encoding='utf-8')
+          marker = '<section class="hero">'
+          block = '''<section class="project-navigation" style="padding:28px 0 0;">
+            <div class="wrap" style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+              <a href="../index.html" class="btn btn-solid">Projects Home</a>
+              <a href="../WebDev-L1-LandingPage/index.html" class="btn btn-outline">Landing Page</a>
+              <a href="../WebDev-L1-TemperatureConverter/index.html" class="btn btn-outline">Temperature Converter</a>
+            </div>
+          </section>
+          '''
+          if 'class="project-navigation"' not in text:
+              text = text.replace(marker, block + '\n' + marker, 1)
+              portfolio.write_text(text, encoding='utf-8')
+
+          temp = Path('WebDev-L1-TemperatureConverter/index.html')
+          text = temp.read_text(encoding='utf-8')
+          marker = '<main class="app">'
+          block = '''<section class="project-actions" style="max-width:760px;margin:0 auto;padding:18px 18px 0;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+            <a href="../index.html" style="color:#fff;text-decoration:none;font:600 13px Arial,sans-serif;padding:9px 15px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08)">Projects Home</a>
+            <a href="../WebDev-L1-LandingPage/index.html" style="color:#fff;text-decoration:none;font:600 13px Arial,sans-serif;padding:9px 15px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08)">Landing Page</a>
+            <a href="../webDev-L1-Portfolio/index.html" style="color:#fff;text-decoration:none;font:600 13px Arial,sans-serif;padding:9px 15px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08)">Portfolio</a>
+          </section>
+          '''
+          if 'class="project-actions"' not in text:
+              text = text.replace(marker, block + '\n' + marker, 1)
+              temp.write_text(text, encoding='utf-8')
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add webDev-L1-Portfolio/index.html WebDev-L1-TemperatureConverter/index.html
+          git diff --cached --quiet || git commit -m "Add navigation buttons to portfolio and temperature converter"
+          git push
+
+      - name: Remove workflow
+        if: always()
+        shell: bash
+        run: |
+          rm -f .github/workflows/add-project-navigation.yml
+          git add .github/workflows/add-project-navigation.yml
+          git diff --cached --quiet || git commit -m "Remove one-time navigation workflow"
+          git push || true
