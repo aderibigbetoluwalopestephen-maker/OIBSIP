@@ -6,6 +6,29 @@
   <meta name="description" content="PurpleNova — modern digital solutions landing page.">
   <title>PurpleNova | Digital Solutions</title>
   <link rel="stylesheet" href="style.css">
+<style>
+  /* ---------- MOBILE RESPONSIVE NAVIGATION ---------- */
+  @media (max-width: 760px){
+    .navbar{flex-wrap:wrap; gap:10px; padding:12px 16px;}
+    .navbar nav{width:100%; display:flex; gap:7px; overflow-x:auto; scrollbar-width:none; padding-bottom:2px;}
+    .navbar nav::-webkit-scrollbar{display:none;}
+    .navbar nav a{flex:0 0 auto; white-space:nowrap; font-size:.78rem;}
+    .hero{grid-template-columns:1fr;}
+    .hero-content{width:100%;}
+    .hero-actions{flex-direction:column; align-items:stretch;}
+    .hero-actions .btn{width:100%; text-align:center;}
+    .hero-card{min-height:280px;}
+    .feature-grid{grid-template-columns:1fr;}
+    .about{grid-template-columns:1fr;}
+    .section,.cta{padding-left:18px; padding-right:18px;}
+  }
+  @media (max-width:480px){
+    .navbar .logo{font-size:1rem;}
+    .hero h1{font-size:clamp(2.2rem,11vw,3.5rem);}
+    .hero-card{min-height:230px;}
+    .mini-card{font-size:.75rem;}
+  }
+</style>
 </head>
 <body>
   <header class="navbar">

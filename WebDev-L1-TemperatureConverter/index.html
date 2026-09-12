@@ -11,6 +11,27 @@
     .project-nav a{color:#fff;text-decoration:none;font:600 13px Arial,sans-serif;padding:8px 13px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08)}
     .project-nav a:hover{background:rgba(255,255,255,.16)}
     .app{padding-top:85px}
+    /* ---------- MOBILE RESPONSIVE ---------- */
+    @media (max-width: 600px){
+      .project-nav{justify-content:flex-start; overflow-x:auto; flex-wrap:nowrap; gap:7px; padding:10px 12px; scrollbar-width:none;}
+      .project-nav::-webkit-scrollbar{display:none;}
+      .project-nav a{font-size:11px; padding:7px 10px; flex:0 0 auto; white-space:nowrap;}
+      .app{padding:78px 14px 20px;}
+      .converter{width:100%; max-width:100%; padding:26px 18px;}
+      .converter h1{font-size:clamp(2.1rem,11vw,3.2rem); line-height:1.05;}
+      .converter .intro{font-size:.9rem;}
+      form{width:100%;}
+      input,select,button{width:100%; min-height:48px;}
+      .result{margin-top:20px;}
+      #resultValue{font-size:clamp(2rem,12vw,3.5rem); overflow-wrap:anywhere;}
+      footer{text-align:center; font-size:.75rem; padding:18px 8px;}
+    }
+    @media (max-width:380px){
+      .app{padding-left:10px; padding-right:10px;}
+      .converter{padding:22px 14px;}
+      .brand{font-size:.85rem;}
+    }
+
   </style>
 </head>
 <body>

@@ -186,6 +186,45 @@
     .contact-card{ grid-template-columns:1fr; padding:32px; }
     .stats{ gap:28px; }
   }
+  /* ---------- MOBILE RESPONSIVE PROJECT NAV ---------- */
+  @media (max-width: 880px){
+    header{position:sticky;}
+    nav.wrap{height:auto; min-height:68px; padding:12px 18px; gap:12px;}
+    .brand{font-size:1rem;}
+    .nav-links{display:flex; width:100%; order:3; gap:8px; overflow-x:auto; padding:2px 0 6px; scrollbar-width:none; white-space:nowrap;}
+    .nav-links::-webkit-scrollbar{display:none;}
+    .nav-links a{font-size:.78rem; padding:7px 10px; border:1px solid var(--line); border-radius:999px; flex:0 0 auto;}
+    .nav-cta{font-size:.78rem; padding:8px 14px; margin-left:auto;}
+    .nav-toggle{display:none;}
+    .hero{padding:54px 0 48px;}
+    .hero .wrap{gap:34px;}
+    .hero h1{font-size:clamp(2rem,10vw,3rem);}
+    .hero .role{font-size:1rem;}
+    .hero p.lede{font-size:.9rem;}
+    .btn-row,.center-cta{width:100%;}
+    .btn{justify-content:center; width:100%;}
+    .stats{justify-content:space-between; gap:16px;}
+    .social-row{justify-content:center;}
+    .section{padding:60px 0;}
+    .section-head h2{font-size:1.75rem;}
+    .contact-card{padding:24px;}
+    .contact-links a{font-size:.86rem; overflow-wrap:anywhere;}
+    footer .wrap{justify-content:center; text-align:center;}
+  }
+
+  @media (max-width:480px){
+    .wrap{padding:0 18px;}
+    nav.wrap{padding:10px 14px;}
+    .nav-links{gap:6px;}
+    .hero-photo-wrap{max-width:240px;}
+    .stats{gap:12px;}
+    .stat b{font-size:1.35rem;}
+    .stat span{font-size:.72rem;}
+    .grid-3,.projects-grid{gap:16px;}
+    .card{padding:22px 18px;}
+    .contact-card{padding:22px 18px;}
+  }
+
 </style>
 </head>
 <body>
