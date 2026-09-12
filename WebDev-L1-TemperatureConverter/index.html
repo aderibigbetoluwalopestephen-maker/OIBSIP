@@ -6,8 +6,20 @@
   <meta name="description" content="Purple temperature converter using vanilla JavaScript.">
   <title>Tempora | Temperature Converter</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .project-nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:14px 18px;background:rgba(18,10,30,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.12)}
+    .project-nav a{color:#fff;text-decoration:none;font:600 13px Arial,sans-serif;padding:8px 13px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08)}
+    .project-nav a:hover{background:rgba(255,255,255,.16)}
+    .app{padding-top:85px}
+  </style>
 </head>
 <body>
+  <nav class="project-nav" aria-label="Project navigation">
+    <a href="../index.html">Projects Home</a>
+    <a href="../WebDev-L1-LandingPage/index.html">Landing Page</a>
+    <a href="../webDev-L1-Portfolio/index.html">Portfolio</a>
+  </nav>
+
   <main class="app">
     <section class="converter">
       <div class="brand"><span>°</span> TEMPORA</div>
