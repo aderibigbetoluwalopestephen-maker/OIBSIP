@@ -1,0 +1,62 @@
+name: Link all project pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  link-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add navigation links to every project page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          landing = Path('WebDev-L1-LandingPage/index.html')
+          s = landing.read_text(encoding='utf-8')
+          old = '''    <nav>\n      <a href="#home">Home</a>\n      <a href="#features">Features</a>\n      <a href="#about">About</a>\n      <a href="#contact">Contact</a>\n    </nav>'''
+          new = '''    <nav>\n      <a href="../index.html">Projects Home</a>\n      <a href="#home">Home</a>\n      <a href="#features">Features</a>\n      <a href="#about">About</a>\n      <a href="#contact">Contact</a>\n      <a href="../webDev-L1-Portfolio/index.html">Portfolio</a>\n      <a href="../WebDev-L1-TemperatureConverter/index.html">Temperature Converter</a>\n    </nav>'''
+          if old not in s:
+              raise SystemExit('Landing navigation pattern not found')
+          landing.write_text(s.replace(old, new, 1), encoding='utf-8')
+
+          temp = Path('WebDev-L1-TemperatureConverter/index.html')
+          s = temp.read_text(encoding='utf-8')
+          marker = '''  <main class="app">'''
+          nav = '''  <nav class="project-nav" aria-label="Project navigation">\n    <a href="../index.html">Projects Home</a>\n    <a href="../WebDev-L1-LandingPage/index.html">Landing Page</a>\n    <a href="../webDev-L1-Portfolio/index.html">Portfolio</a>\n  </nav>\n\n'''
+          if marker not in s:
+              raise SystemExit('Temperature Converter main marker not found')
+          s = s.replace(marker, nav + marker, 1)
+          css = '''  <style>\n    .project-nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;padding:14px 18px;background:rgba(18,10,30,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.12)}\n    .project-nav a{color:#fff;text-decoration:none;font:600 13px Arial,sans-serif;padding:8px 13px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08)}\n    .project-nav a:hover{background:rgba(255,255,255,.16)}\n    .app{padding-top:85px}\n  </style>\n'''
+          s = s.replace('</head>', css + '</head>', 1)
+          temp.write_text(s, encoding='utf-8')
+
+          portfolio = Path('webDev-L1-Portfolio/index.html')
+          s = portfolio.read_text(encoding='utf-8')
+          old = '''<div class="nav-links">'''
+          start = s.find(old)
+          if start == -1:
+              raise SystemExit('Portfolio nav-links not found')
+          end = s.find('</div>', start)
+          if end == -1:
+              raise SystemExit('Portfolio nav-links closing tag not found')
+          replacement = '''<div class="nav-links">\n      <a href="../index.html">Projects Home</a>\n      <a href="../WebDev-L1-LandingPage/index.html">Landing Page</a>\n      <a href="../WebDev-L1-TemperatureConverter/index.html">Temperature Converter</a>\n    '''
+          s = s[:start] + replacement + s[end:]
+          portfolio.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Commit changes and remove one-time workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f .github/workflows/link-all-pages.yml
+          git add WebDev-L1-LandingPage/index.html WebDev-L1-TemperatureConverter/index.html webDev-L1-Portfolio/index.html .github/workflows/link-all-pages.yml
+          git diff --cached --quiet && exit 0
+          git commit -m "feat: link all OIBSIP project pages"
+          git push
